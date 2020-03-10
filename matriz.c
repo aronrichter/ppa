@@ -73,8 +73,23 @@ void matriz_preencher(matriz_t *m, double valor) {
 }
 
 matriz_t *matriz_multiplicar(matriz_t *A, matriz_t *B) {
-    printf("Implementar!\n");
-    return NULL;
+   matriz_t *retorno = NULL;
+   int i, j, k;
+    
+   retorno =  matriz_criar(A->linhas, A->colunas);   
+    
+   for (i = 0; i < A->linhas; i++) {
+      for (j = 0; j < B->colunas; j++) {  
+        int aux = 0;
+        for(k = 0; k < A->linhas-1; k++) {
+            aux += A->dados[i][k] * B->dados[k][j];
+        } 
+        printf("aux %d \n", aux);
+        retorno->dados[i][j] = aux;
+      }
+   }
+    
+    return retorno;
 }
 
 void matriz_imprimir(matriz_t *m) {

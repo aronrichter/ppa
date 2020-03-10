@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     
     printf("Matriz C\n");
     matriz_imprimir(C);
-
+    printf("oiii");
     D = matriz_multiplicar(A, B);
 
     printf("Matriz D\n");
