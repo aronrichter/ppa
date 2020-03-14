@@ -51,7 +51,7 @@ void matriz_destruir(matriz_t *m) {
     free(m->dados);
     free(m);
 
-    printf("Dados limpos");
+    printf("Dados limpos\n");
 }
 
 void matriz_preencher_rand(matriz_t *m) {
@@ -80,12 +80,9 @@ matriz_t *matriz_multiplicar(matriz_t *A, matriz_t *B) {
     
    for (i = 0; i < A->linhas; i++) {
       for (j = 0; j < B->colunas; j++) {  
-        int aux = 0;
         for(k = 0; k < A->linhas-1; k++) {
-            aux += A->dados[i][k] * B->dados[k][j];
+            retorno->dados[i][j] += A->dados[i][k] * B->dados[k][j];
         } 
-        printf("aux %d \n", aux);
-        retorno->dados[i][j] = aux;
       }
    }
     
@@ -106,15 +103,11 @@ matriz_t *matriz_somar(matriz_t *A, matriz_t *B) {
    matriz_t *retorno = NULL;
    int i, j;
 
-   retorno =  matriz_criar(A->linhas, A->colunas);   
-
-    printf("Soma\n");
+   retorno =  matriz_criar(A->linhas, A->colunas);
 
    for (i = 0; i < A->linhas; i++) {
       for (j = 0; j < B->colunas; j++) {          
          retorno->dados[i][j] = A->dados[i][j] + B->dados[i][j];
-
-         printf("%.17f + %.17f = %.17f\n", A->dados[i][j], B->dados[i][j], retorno->dados[i][j]);
       }
    }
     
